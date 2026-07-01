@@ -40,7 +40,7 @@
         if (userData) {
             runCheck(userData);
         } else {
-            showTalhaLock(id);
+            showAhmadLock(id);
         }
     }
 
@@ -126,10 +126,10 @@ function loadRoute(route, u) {
     }
 
     // Purani sab hatao, same bhi same nahi — hamesha fresh load
-    document.querySelectorAll("[id^='talha-injected-']").forEach(el => el.remove());
+    document.querySelectorAll("[id^='ahmad-injected-']").forEach(el => el.remove());
 
     const div = document.createElement('div');
-    div.id = 'talha-injected-' + route.k;
+    div.id = 'ahmad-injected-' + route.k;
     document.body.appendChild(div);
 
     fetch(baseURL + route.f)
@@ -148,9 +148,9 @@ function loadRoute(route, u) {
 
     // ─── Error popup ─────────────────────────────────────────────────────────
     function showErrorPopup() {
-        if (document.getElementById('talhaErrorPopup')) return;
+        if (document.getElementById('ahmadErrorPopup')) return;
         const popup = document.createElement("div");
-        popup.id = "talhaErrorPopup";
+        popup.id = "ahmadErrorPopup";
         popup.innerText = "⚠️ APPLY ON CORRECT URL ⚠️";
         Object.assign(popup.style, {
             position: "fixed",
@@ -175,22 +175,22 @@ function loadRoute(route, u) {
         }, 3000);
     }
 
-    // ─── Talha Lock Dialog ───────────────────────────────────────────────────
-    function showTalhaLock(uid) {
+    // ─── Ahmad Lock Dialog ───────────────────────────────────────────────────
+    function showAhmadLock(uid) {
         document.querySelectorAll("dialog#ahmadLock").forEach(d => { d.close(); d.remove(); });
 
         const htmlContent = `<style>___subtmpl0___</style>
 <div class="glass">
   <div class="heart-bg"></div>
   <div class="close-cross">&times;</div>
-  <div class="lock-icon logo-pulse"><img src="https://logo-png-sigma.vercel.app/t.q.k.png" alt="Logo"/></div>
+  <div class="lock-icon logo-pulse"><img src="https://logo-png-sigma.vercel.app/TQK.png" alt="Logo"/></div>
   <div style="font-size:2rem;font-weight:900;color:#fff;text-shadow:0 5px 25px rgba(0,0,0,0.35);letter-spacing:1px;margin-bottom:10px;margin-top:1rem;">TALHA SCRIPTS</div>
   <div style="font-size:1rem;color:#DC8DE6;margin:1rem 0;letter-spacing:1px;">(🔒 LOCKED 🔒)</div>
   <div class="info">
     <div class="label">ID</div>
     <div class="value-row">
       <div class="value">${uid}</div>
-      <button class="copy-btn" id="copyBtnTalha">
+      <button class="copy-btn" id="copyBtnAhmad">
         <svg viewBox="0 0 24 24"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v16h13a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z"/></svg>
         <span class="tooltip">Copied ✓</span>
       </button>
@@ -200,12 +200,12 @@ function loadRoute(route, u) {
 </div>`;
 
         const myDialog = document.createElement("dialog");
-        myDialog.id = "talhaLock";
+        myDialog.id = "ahmadLock";
         myDialog.innerHTML = htmlContent;
         document.body.appendChild(myDialog);
         myDialog.showModal();
 
-        myDialog.querySelector("#copyBtnTalha").onclick = function () {
+        myDialog.querySelector("#copyBtnAhmad").onclick = function () {
             navigator.clipboard.writeText(uid).then(() => {
                 this.classList.add('show-tooltip');
                 setTimeout(() => this.classList.remove('show-tooltip'), 1200);
